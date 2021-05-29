@@ -1,0 +1,93 @@
+gist_file = open("train.txt", "r")
+try:
+    content = gist_file.read()
+    stopwords = content.split("\n")
+finally:
+    gist_file.close()
+newcha=''
+newdoc=[]
+for word in stopwords:
+    
+    newsentence=''
+    words=word.split(" ")
+    for sentence in words:
+        worduse=''
+        newword=[]
+        x=0
+        while(x<len(sentence)):
+
+            if sentence[x] == 'a' or sentence[x] == 'A':
+                newcha='0'
+            elif sentence[x] == 'b' or sentence[x] == 'B':
+                newcha='1'
+            elif sentence[x]  == 'c' or sentence[x] == 'C':
+                newcha='2'
+            elif sentence[x]  == 'd' or sentence[x] == 'D':
+                newcha='3'
+            elif sentence[x]  == 'e' or sentence[x] == 'E':
+                newcha='4'
+            elif sentence[x]  == 'f' or sentence[x] == 'F':
+                newcha='5'
+            elif sentence[x]  == 'g' or sentence[x] == 'G':
+                newcha='6'
+            elif sentence[x]  == 'h' or sentence[x] == 'H':
+                newcha='7'
+            elif sentence[x]  == 'i' or sentence[x] == 'I':
+                newcha='8'
+            elif sentence[x]  == 'j' or sentence[x] == 'J':
+                newcha='9'
+            elif sentence[x]  == 'k' or sentence[x] == 'K':
+                newcha='-0'
+            elif sentence[x]  == 'l' or sentence[x] == 'L':
+                newcha='-1'
+            elif sentence[x]  == 'm' or sentence[x] == 'M':
+                newcha='-2'
+            elif sentence[x]  == 'n' or sentence[x] == 'N':
+                newcha='-3'
+            elif sentence[x]  == 'o' or sentence[x] == 'O':
+                newcha='-4'
+            elif sentence[x]  == 'p' or sentence[x] == 'P':
+                newcha='-5'
+            elif sentence[x]  == 'q' or sentence[x] == 'Q':
+                newcha='-6'
+            elif sentence[x]  == 'R' or sentence[x] == 'r':
+                newcha='-7'
+            elif sentence[x]  == 's' or sentence[x] == 'S':
+                newcha='-8'
+            elif sentence[x]  == 't' or sentence[x] == 'T':
+                newcha='-9'
+            elif sentence[x]  == 'u' or sentence[x] == 'U':
+                newcha='=0'
+            elif sentence[x]  == 'v' or sentence[x] == 'V':
+                newcha='=1'
+            elif sentence[x]  == 'w' or sentence[x] == 'W':
+                newcha='=2'
+            elif sentence[x]  == 'x' or sentence[x] == 'X':
+                newcha='=3'
+            elif sentence[x]  == 'y' or sentence[x] == 'Y':
+                newcha='=4'
+            elif sentence[x]  == 'z' or sentence[x] == 'Z':
+                newcha='=5'
+            elif sentence[x] ==' ':
+                newcha=' '
+            else:
+                newcha=' '
+            
+            x+=1
+            newword.append(newcha)
+            
+        worduse=''.join(newword)+' '
+        print(worduse)
+        newsentence=newsentence+worduse
+        
+        
+ 
+    
+    newdoc.append(newsentence+'\n')
+
+gist_file = open("predict.txt", "w")
+try:
+    for sentence in newdoc:
+        gist_file.write(sentence)
+finally:
+    gist_file.close()
